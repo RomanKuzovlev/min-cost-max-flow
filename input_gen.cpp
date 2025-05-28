@@ -3,8 +3,8 @@ using namespace std;
 
 int main()
 {
-    int N = 100000; // nodes
-    int M = 500000; // edges
+    int N = 200000;  // nodes
+    int M = 1000000; // edges
     int maxCap = 20, maxCost = 10;
     cout << N << ' ' << M << '\n';
     mt19937 rng(42);

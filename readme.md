@@ -8,6 +8,9 @@ Residual graph maintains flow reversibility via back edges..
 
 ## Build & Run
 ```bash
+g++ -O2 -std=c++23 input_gen.cpp -o gen
+./gen > input.txt
+
 g++ mcmf.cpp -O2 -std=c++23 -o mcmf
 ./mcmf < input.txt
 ```
