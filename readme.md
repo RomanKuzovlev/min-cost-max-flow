@@ -6,14 +6,32 @@ Goal: fully understand it and optimize performance.
 Uses node potentials to keep Dijkstra valid even with negative-cost reverse edges.  
 Residual graph maintains flow reversibility via back edges..
 
-## Build & Run
+## Build & Run & Perf
 ```bash
 g++ -O2 -std=c++23 input_gen.cpp -o gen
 ./gen > input.txt
 
 g++ mcmf.cpp -O2 -std=c++23 -o mcmf
 ./mcmf < input.txt
+
+perf stat -e LLC-loads,LLC-load-misses ./mcmf < input.txt
 ```
+
+## Perfomance optimization
+
+Basic version (mcmf_unoptimized.cpp), 200k nodes, 1m edges
+```
+11.886.961      LLC-loads                                                             
+4.411.555      LLC-load-misses                  #   37,11% of all LL-cache accesses  
+
+0,871820935 seconds time elapsed
+
+0,843496000 seconds user
+0,026951000 seconds sys
+```
+
+Optimization 1:
+Pre-allocate memory in adj. list "mcf.reserve_edges" -> total time 0.76 s.
 
 ## Notes
 

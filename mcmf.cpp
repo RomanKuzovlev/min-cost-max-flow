@@ -86,6 +86,12 @@ public:
         return {total_flow, total_cost};
     }
 
+    void reserve_edges(int perNode)
+    {
+        for (auto &adj : graph)
+            adj.reserve(perNode);
+    }
+
 private:
     int N;
     vector<vector<Edge>> graph;
@@ -97,6 +103,8 @@ int main()
     int N, M;
     cin >> N >> M;
     MinCostMaxFlow mcf(N);
+
+    mcf.reserve_edges(10); // Optimization
 
     for (int i = 0; i < M; ++i)
     {
